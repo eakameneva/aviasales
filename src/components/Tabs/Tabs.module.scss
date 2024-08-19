@@ -1,0 +1,34 @@
+@use '../../styles/base';
+
+
+.button {
+padding: 17px 26px;
+color:  base.$font-primary-color;
+font-size: 12px;
+font-family: base.$font-family;
+font-weight: base.$semi-bold;
+letter-spacing: 0.5px;
+background:none;
+border: none; 
+cursor: pointer;
+}
+
+.button:not(:last-child):not(.chosen)  {
+  border-right: 1px solid #DFE5EC;
+}
+
+.chosen {
+background-color: base.$primary-color;
+color:white;
+}
+
+.button-container {
+display: flex;
+  border: 1px solid #DFE5EC;
+  border-radius: 6px;
+  background-color: white;
+  width: max-content;
+  overflow: hidden;
+}
+
+

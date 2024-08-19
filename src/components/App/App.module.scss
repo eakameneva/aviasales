@@ -1,0 +1,42 @@
+@use '../../styles/base';
+
+.button {
+background-color: base.$primary-color;
+color:white;
+border:none;
+border-radius: 5px;
+padding: 15px 80px;
+font-size: 12px;
+font-family: base.$font-family;
+font-weight: base.$semi-bold;
+letter-spacing: 0.5px;
+cursor: pointer;
+
+}
+
+.wrapper{
+display: flex;
+flex-direction: column;
+gap: 30px;
+padding: 50px 103px;
+margin: 0 auto;
+background-color: #F3F7FA;
+    
+}
+
+.logo{
+margin: 0 auto;
+  
+}
+
+.page-content{
+display: flex;
+gap:20px;
+margin: 0 auto;
+}
+
+.results-content{
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
