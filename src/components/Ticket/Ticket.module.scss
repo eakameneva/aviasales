@@ -1,29 +1,41 @@
 @use '../../styles/base';
 
-
 .ticket-container {
-    background-color: white;
-    max-width: 502px;
-    box-sizing: border-box;
-    padding: 20px;
-    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+  background-color: white;
+  max-width: 502px;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
-.price{
-    font-family: base.$font-family;
-    color:  base.$primary-color;
-    font-size: 24px;
-    margin: 0;
-    margin-bottom: 20px;
+.ticket-container:hover {
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
 }
-
+.price {
+  font-family: base.$font-family;
+  color: base.$primary-color;
+  font-size: 24px;
+  font-weight: base.$semi-bold;
+  margin: 5px 0 23px 0;
+}
 
 .ticket-info {
-    display: flex;
+  display: flex;
+  justify-content: space-between;
 }
 
 .flight-details {
-    display: flex;
-    flex-direction: column;
-    gap: 10px
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.logo {
+  max-width: 110px;
+  max-height: 36px;
+}
+
+@media (max-width: 768px) {
+  .ticket-container {
+    max-width: none;
+  }
 }

@@ -6,8 +6,6 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
-  width: 232px;
-  height: 252px;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
@@ -22,7 +20,7 @@
   font-size: 12px;
   font-weight: base.$semi-bold;
   color: #4a4a4a;
-  margin: 20px 20px 10px 20px;
+  margin: 20px 47px 10px 20px;
   line-height: 12px;
   letter-spacing: 0.5px;
 }
@@ -76,4 +74,14 @@
 .label {
   padding: 10px 20px;
   cursor: pointer;
+}
+.label:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .form {
+    width: auto;
+    height: auto;
+  }
 }

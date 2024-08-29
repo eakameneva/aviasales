@@ -1,34 +1,46 @@
 @use '../../styles/base';
 
-
 .button {
-padding: 17px 26px;
-color:  base.$font-primary-color;
-font-size: 12px;
-font-family: base.$font-family;
-font-weight: base.$semi-bold;
-letter-spacing: 0.5px;
-background:none;
-border: none; 
-cursor: pointer;
+  padding: 15px 26px;
+  color: base.$font-primary-color;
+  font-size: 12px;
+  font-family: base.$font-family;
+  font-weight: base.$semi-bold;
+  letter-spacing: 0.5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-grow: 1;
+}
+.button:hover {
+  opacity: 0.5;
 }
 
-.button:not(:last-child):not(.chosen)  {
-  border-right: 1px solid #DFE5EC;
+.button:not(:last-child):not(.chosen) {
+  border-right: 1px solid #dfe5ec;
 }
 
 .chosen {
-background-color: base.$primary-color;
-color:white;
+  background-color: base.$primary-color;
+  color: white;
 }
 
 .button-container {
-display: flex;
-  border: 1px solid #DFE5EC;
+  display: flex;
+  border: 1px solid #dfe5ec;
   border-radius: 6px;
   background-color: white;
-  width: max-content;
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .button {
+    padding: 16px 20px;
+  }
+}
 
+@media (max-width: 420px) {
+  .button {
+    padding: 10px;
+  }
+}

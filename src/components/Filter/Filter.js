@@ -1,16 +1,17 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { changeCheckbox } from '../../store/aviasalesSlice'
+import { selectCheckbox, selectAllCheckbox } from '../../store/aviasalesSlice'
 
 import styles from './Filter.module.scss'
 
 export default function Filter() {
   const dispatch = useDispatch()
-  const filters = useSelector((state) => state.aviasales.chosenCheckbox)
+  const filtersArray = useSelector((state) => state.aviasales.chosenCheckbox)
   const handleChange = (filterName) => {
-    dispatch(changeCheckbox(filterName))
+    dispatch(selectCheckbox(filterName))
   }
+  const isAllSelected = filtersArray.length === 4
 
   return (
     <div className={styles.form}>
@@ -19,8 +20,8 @@ export default function Filter() {
         <input
           type='checkbox'
           className={styles['real-checkbox']}
-          onChange={() => handleChange('all')}
-          checked={filters.all}
+          onChange={() => dispatch(selectAllCheckbox(isAllSelected))}
+          checked={isAllSelected}
         />
         <span className={styles['custom-checkbox']} />
         Все
@@ -30,8 +31,8 @@ export default function Filter() {
         <input
           type='checkbox'
           className={styles['real-checkbox']}
-          onChange={() => handleChange('noTransfer')}
-          checked={filters.noTransfer}
+          onChange={() => handleChange(0)}
+          checked={filtersArray.includes(0)}
         />
         <span className={styles['custom-checkbox']} />
         Без пересадок
@@ -41,8 +42,8 @@ export default function Filter() {
         <input
           type='checkbox'
           className={styles['real-checkbox']}
-          onChange={() => handleChange('oneTransfer')}
-          checked={filters.oneTransfer}
+          onChange={() => handleChange(1)}
+          checked={filtersArray.includes(1)}
         />
         <span className={styles['custom-checkbox']} />1 пересадка
       </label>
@@ -51,8 +52,8 @@ export default function Filter() {
         <input
           type='checkbox'
           className={styles['real-checkbox']}
-          onChange={() => handleChange('twoTransfers')}
-          checked={filters.twoTransfers}
+          onChange={() => handleChange(2)}
+          checked={filtersArray.includes(2)}
         />
         <span className={styles['custom-checkbox']} />2 пересадки
       </label>
@@ -61,8 +62,8 @@ export default function Filter() {
         <input
           type='checkbox'
           className={styles['real-checkbox']}
-          onChange={() => handleChange('threeTransfers')}
-          checked={filters.threeTransfers}
+          onChange={() => handleChange(3)}
+          checked={filtersArray.includes(3)}
         />
         <span className={styles['custom-checkbox']} />3 пересадки
       </label>

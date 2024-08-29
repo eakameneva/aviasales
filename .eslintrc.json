@@ -28,6 +28,13 @@
       }
     ],
     "quotes": ["error", "single"],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state"]
+      }
+    ],
     "jsx-quotes": ["error", "prefer-single"],
     "semi": ["error", "never"],
     "react/react-in-jsx-scope": "off",
