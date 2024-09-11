@@ -1,6 +1,6 @@
 import React from 'react'
 
-import FlightDetails from '../FlightDetails/FlightDetails'
+import FlightDetails from '../FlightDetailsItem/FlightDetailsItem'
 
 import styles from './Ticket.module.scss'
 

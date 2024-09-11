@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import uniqid from 'uniqid'
 
 export const fetchTickets = createAsyncThunk('aviasales/fetchTickets', async (searchId, { rejectWithValue }) => {
@@ -79,3 +79,36 @@ const aviasalesSlice = createSlice({
 
 export const { changeTab, changeCheckbox, setSearchId, selectAllCheckbox, selectCheckbox } = aviasalesSlice.actions
 export default aviasalesSlice.reducer
+
+const selectTickets = (state) => state.aviasales.tickets
+const selectChosenTab = (state) => state.aviasales.chosenTab
+const selectChosenCheckbox = (state) => state.aviasales.chosenCheckbox
+
+const selectFilteredTickets = createSelector([selectTickets, selectChosenCheckbox], (tickets, chosenCheckbox) =>
+  tickets.filter((ticket) => {
+    let maxStops = 0
+    ticket.segments.forEach((segment) => {
+      if (segment.stops.length > maxStops) {
+        maxStops = segment.stops.length
+      }
+    })
+    return chosenCheckbox.includes(maxStops)
+  })
+)
+
+export const selectSortedTickets = createSelector([selectChosenTab, selectFilteredTickets], (tab, filteredTickets) => {
+  const ticketsWithDuration = filteredTickets.map((ticket) => {
+    let totalDuration = 0
+    ticket.segments.forEach((segment) => {
+      totalDuration += segment.duration
+    })
+    return { ...ticket, totalDuration }
+  })
+  if (tab === 'cheapest') {
+    return filteredTickets.toSorted((a, b) => a.price - b.price)
+  }
+  if (tab === 'fastest') {
+    return ticketsWithDuration.toSorted((a, b) => a.totalDuration - b.totalDuration)
+  }
+  return filteredTickets
+})
